@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+env/
+venv/
+
+# Django stuff:
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Static files (if collected separately)
+staticfiles/
+static/
+
+# Local settings
+local_settings.py
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Pytest
+.cache
+
+# MyPy
+.mypy_cache/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environment variable files
+.env
+*.env
+
+# macOS
+.DS_Store
+
+**/media
+**/db.sqlite3
+**/migrations/
