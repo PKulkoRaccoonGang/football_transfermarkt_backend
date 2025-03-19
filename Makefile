@@ -3,15 +3,6 @@ CONTAINER_NAME = football_transfermarkt_backend
 
 .PHONY: ruff ruff-fix test clean docker-start docker-build docker-shell docker-migrate docker-makemigrations
 
-ruff:
-	ruff .
-
-ruff-fix:
-	ruff --fix .
-
-test:
-	$(PYTHON) -m pytest
-
 clean:
 	find . -name "__pycache__" -type d -exec rm -rf {} +
 	find . -name "*.pyc" -type f -delete
@@ -19,6 +10,9 @@ clean:
 
 docker-start:
 	$(DOCKER_COMPOSE) up --build
+
+docker-dev:
+	$(DOCKER_COMPOSE) --env-file .env.development up --build
 
 docker-build:
 	$(DOCKER_COMPOSE) up -d --build
