@@ -1,17 +1,20 @@
-FROM python:3.10-slim
+FROM python:3.10-alpine
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     gcc \
-    libpq-dev \
-    postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
+    musl-dev \
+    postgresql-dev \
+    python3-dev
 
-COPY requirements.txt /app/
+RUN python -m venv /app/venv
+ENV PATH="/app/venv/bin:$PATH"
+
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
+COPY . .
 
 ENV DJANGO_SETTINGS_MODULE=football_transfermarkt.settings
 

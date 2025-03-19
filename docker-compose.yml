@@ -1,20 +1,22 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
     container_name: football_transfermarkt_db
     restart: always
     environment:
-      POSTGRES_DB: football_transfermarkt
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env.development
 
   web:
+    env_file:
+      - .env.development
     build: .
     container_name: football_transfermarkt_backend
     depends_on:
@@ -22,10 +24,10 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - .:/app
+      - ./football_transfermarkt:/app/football_transfermarkt
     environment:
       DJANGO_SETTINGS_MODULE: football_transfermarkt.settings
-      DATABASE_URL: "postgres://myuser:mypassword@db:5432/football_transfermarkt"
+      DATABASE_URL: ${DATABASE_URL}
 
 volumes:
   postgres_data:

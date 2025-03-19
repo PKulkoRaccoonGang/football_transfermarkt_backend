@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+for key, value in os.environ.items():
+    if key.startswith("POSTGRES") or key == "DATABASE_URL":
+        print(f"================================={key}={value}")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -76,18 +80,9 @@ WSGI_APPLICATION = "football_transfermarkt.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.getenv(
-            "DATABASE_URL",
-            "postgres://myuser:mypassword@localhost:5432/football_transfermarkt",
-        ),
+        default=os.getenv("DATABASE_URL"),
         conn_max_age=600,
     )
 }
@@ -170,8 +165,3 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
 }
-
-# AIzaSyDkboldfVJovStIgBG4NOh_9lUOxvCDB6Y key1
-# AIzaSyB12P1AIIPuFOjTx80C5xm9efRpMA9pIog key2
-# GOOGLE_GEMINI_API_KEY = os.getenv("GOOGLE_GEMINI_API_KEY")
-GOOGLE_GEMINI_API_KEY = "AIzaSyB12P1AIIPuFOjTx80C5xm9efRpMA9pIog"
