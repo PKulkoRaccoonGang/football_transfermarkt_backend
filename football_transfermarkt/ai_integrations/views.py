@@ -1,11 +1,12 @@
+import os
 import google.generativeai as genai
 from rest_framework.response import Response
 from rest_framework import status
-from django.conf import settings
 from rest_framework.decorators import api_view
 
+GOOGLE_GEMINI_API_KEY = os.getenv("GOOGLE_GEMINI_API_KEY")
 
-genai.configure(api_key=settings.GOOGLE_GEMINI_API_KEY)
+genai.configure(api_key=GOOGLE_GEMINI_API_KEY)
 
 
 @api_view(["POST"])
