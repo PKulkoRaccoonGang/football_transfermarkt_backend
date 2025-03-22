@@ -1,0 +1,23 @@
+backend:
+  - 'football_transfermarkt/**'
+  - '**/*.py'
+
+docker:
+  - 'Dockerfile'
+  - 'docker-compose.yml'
+  - '**/Dockerfile'
+  - '**/docker-compose.yml'
+  - '.dockerignore'
+  - '**/*.sh'
+
+dependencies:
+  - 'requirements.txt'
+
+ci:
+  - '.github/workflows/**'
+  - '.github/actions/**'
+
+security:
+  - 'security/**'
+  - '**/middleware/security_*.py'
+  - '**/auth/**'
