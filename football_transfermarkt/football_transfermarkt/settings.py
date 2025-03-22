@@ -6,10 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-for key, value in os.environ.items():
-    if key.startswith("POSTGRES") or key == "DATABASE_URL":
-        print(f"================================={key}={value}")
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
